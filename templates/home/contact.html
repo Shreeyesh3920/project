@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{%block title%}Contact{%endblock title%}
+{% block contactactive%}active{%endblock contactactive%}
+{%block body%}
+<body style="background-color:MintCream;">
+<div class="container mb-3">
+  {% load staticfiles %}
+<img src="{% static 'contact1.jpg' %}" class="d-block w-100">
+</div>
+
+
+<div class="container"><h4 style="color:SeaGreen">Contact Information</h4>
+  Address: <b>198 West 21th Street, Suite 721 India IND  10016</b><br>
+  
+  Phone:<b> + 1235 2355 98</b><br>
+  
+  Email:<b> shreeyeshmhatre69@gmail.com</b><br>
+  
+  Website <b>Digitalocean.com</b><br><br></div>
+<form method="post" action="/contactus/"> 
+    {% csrf_token %}
+<div class="container">
+    <div class="mb-3 ">
+        <label for="exampleFormControlInput1" class="form-label">NAME</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" style="border-color:SeaGreen">
+      </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" style="border-color:SeaGreen">
+      </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Message</label>
+        <textarea class="form-control" id="desc" name="desc" rows="3" style="border-color:SeaGreen"></textarea>
+        <div class='container my-3'><button type="submit" class="btn btn-success">Submit</button></div>
+      </div>
+      
+    </form>     
+      
+      
+    
+    </div>
+
+
+  </body>
+    {%endblock body%}

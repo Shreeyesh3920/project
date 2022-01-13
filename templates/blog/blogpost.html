@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<div class="container py-3">
+<h2 class="blog-post-title">{{post.title}}</h2>
+        <p class="blog-post-meta">{{post.author}}</p>
+        {{post.timeStamp}}
+        <div class="container">
+        {{post.content|safe}}
+        </div>
+        
+        
+        
+{% if user.is_authenticated %}
+
+<div class="container my-5">
+        <h3>Comments</h3>
+        <form  method="post" action="/blog/postComment/">
+                {% csrf_token %}
+                <div class="mb-3">
+                      <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Post your comments here</label>
+                        <textarea class="form-control" id="comment" name="comment" placeholder="Comment Here" rows="2"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-success">Comment</button>
+
+                      <input type="hidden" name="postSno" value="{{post.sno}}">
+
+        </form>
+
+<div class="container my-3">
+        {% for post in comments %}
+      
+
+<div class="list-group my-2">
+        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                {% load staticfiles %}
+          <img src="{% static 'user.png' %}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-0">{{post.user.username}}</h6>
+              <p class="mb-0 opacity-75">{{post.comment}}</p>
+            </div>
+            
+          </div>
+        </a>
+       
+        {% endfor %}</div> 
+        {% else %}
+        <div class="container my-5">
+                <h3>Comments<h3>
+                        <h6>Login to comment here</h6><button type="button" class="btn btn-success mr-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                Login</button>
+
+
+        </div>
+        {% endif %}
+ {%endblock body%}

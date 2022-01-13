@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block add%}active{%endblock add%}
+{% block body %}
+<body style="background-color:MintCream;">
+<div class="container my-3">
+  <center><h3 style="color:SeaGreen"> CREATE BLOG</h3></center>
+  <form method="post" action="/addblog/" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+   
+    
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title"   name="title" placeholder="Title" style="border-color:SeaGreen" >
+  </div>
+  <div class="mb-3">
+    
+  
+    
+    <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+    <meta charset="utf-8">
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+
+<script type="text/javascript">
+  window.onload = () => {
+    CKEDITOR.replace("content");
+  };
+
+  function sendText() {
+    window.parent.postMessage(CKEDITOR.instances.CK1.getData(), "*");
+  }
+</script>
+<script type="text/javascript" src="https://cdn.ckeditor.com/4.6.2/standard/config.js?t=H0CG"></script><link rel="stylesheet" type="text/css" href="https://cdn.ckeditor.com/4.6.2/standard/skins/moono-lisa/editor.css?t=H0CG"><script type="text/javascript" src="https://cdn.ckeditor.com/4.6.2/standard/lang/en-gb.js?t=H0CG"></script><script type="text/javascript" src="https://cdn.ckeditor.com/4.6.2/standard/styles.js?t=H0CG"></script><link rel="stylesheet" type="text/css" href="https://cdn.ckeditor.com/4.6.2/standard/plugins/scayt/skins/moono-lisa/scayt.css"></head>
+<body>
+<textarea name="content" id="CK1" style="visibility: hidden; display: none;" rows="14" ></textarea>
+<br>
+
+  </div>
+    
+  
+    <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Author</label>
+    <input type="text" class="form-control" id="author" name="author" placeholder="Author" style="border-color:SeaGreen">
+  </div>
+ 
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Add Slug (example: title-post)</label>
+    <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" style="border-color:SeaGreen">
+  </div>
+  <div class='container my-3 text-center'><button type="submit" class="btn btn-success">Submit</button></div>
+<form>
+</div>
+
+
+
+</body>
+
+
+
+
+
+{% endblock body %}

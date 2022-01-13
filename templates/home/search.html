@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{%block title%}SEARCH{%endblock title%}
+{%block body%}
+<body style="background-color:MintCream;">
+{% if posts|length < 1 %}<div class="container">
+<br><h3 style="color:SeaGreen">NO Search Results</h3>
+Your search - <b>{{querys}}</b>- did not match any documents.<br><br>
+<h4>Suggestions:</h4>
+#Make sure that all words are spelled correctly.<br>
+#Try different keywords.<br>
+#Try more general keywords.<br></div>
+{% endif %}
+<style>
+  .col {
+    border: 1px outset LightGreen;
+    background-color: white;
+    
+  }
+  </style>
+{% for you in posts %}
+
+<div class="container">
+  <br><h2 style="color:SeaGreen">Search Results:</h2>
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 my-3 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{you.author}}</strong>
+          <h3 class="mb-0">{{you.title}}</h3>
+          <div class="mb-1 text-muted">{{you.timeStamp}}</div>
+          <p class="card-text mb-auto">{{you.content| truncatechars:500|safe}}</p>
+          <a href="/blog/{{you.slug}}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">                                                      
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+      
+{%endblock body%}
